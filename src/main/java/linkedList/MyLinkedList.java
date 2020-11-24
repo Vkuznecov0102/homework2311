@@ -2,25 +2,27 @@ package linkedList;
 
 public class MyLinkedList {
     private Node head;
-    private int realSize;
 
     public MyLinkedList() {
         head = null;
-        realSize = 0;
     }
 
     public int size() {
         Node currNode = head;
-        if (currNode == null) return 0;
+        int count = 0;
+        if (currNode == null) {
+            return 0;
+        }
         while (currNode != null) {
-            realSize++;
+            count++;
             currNode = currNode.getNext();
         }
-        return realSize;
+        return count;
     }
 
     public boolean isEmpty() {
-        return realSize == 0;
+        Node currNode = head;
+        return currNode == null;
     }
 
     public boolean contains(Object o) {
@@ -58,15 +60,31 @@ public class MyLinkedList {
     }
 
     public void clear() {
-
+        head = null;
     }
 
     public Object get(int index) {
-        return null;
+        checkIndex(index);
+        Node curNode = head;
+        int count = 0;
+        while (count != index) {
+            curNode = curNode.getNext();
+            count++;
+        }
+        return curNode.getValue();
     }
 
     public Object set(int index, Object element) {
-        return null;
+        checkIndex(index);
+        Node curNode = head;
+
+        int count = 0;
+        while (count != index) {
+            curNode = curNode.getNext();
+            count++;
+        }
+        curNode.setValue(element);
+        return curNode.getValue();
     }
 
     public void add(int index, Object element) {
@@ -74,7 +92,46 @@ public class MyLinkedList {
     }
 
     public Object remove(int index) {
-        return null;
+        checkIndex(index);                                  //проверяем корректен ли индекс
+        if (index == 0) {                                       //если индекс равен нулю
+            Object resValue = head.getValue();                //создаем объект равный значению нулевого элемента
+            if (head.getNext() == null) {                       //если следующий элемент null
+                head = null;                                  //то и нулевой null
+            } else {                                          //или
+                head = head.getNext();                      //получаем значение следующего элемента
+            }
+            return resValue;                                //возвращаем объект нулевого элемента
+        }
+        Node curNode = head;                                  //создаем ссылку на текущий элемент и приравниваем к основному
+        Node prevNode = head;                                 //создаем ссылку на предыдущий элемент и приравниваем к основному
+        int count = 0;                                        //создаем счетчик
+        while ((curNode = curNode.getNext()) != null) {         // пока список не заканчивается
+            count++;                                        //увеличиваем счетчик
+            if (count == index) {                               //если счетчик равен индексу
+                break;                                      //останавливаемся
+            }
+            prevNode = prevNode.getNext();                    //ссылка на предыдущий элемент равна следующему
+        }
+        Object resValue = curNode.getValue();                 //создаем объект и кладем в него значение текущего элемента
+
+        if (curNode.getNext() == null) {                      //если элемент null
+            prevNode.setNext(null);                         //устанавливаем предыдущему значение null
+        } else {                                               //или
+            prevNode.setNext(curNode.getNext());            //предыдущему элементу ставим значение следующего
+            curNode.setNext(null);                          //текущему элементу ставим значение null
+        }
+        return resValue;                                    //возвращаем объект
+    }
+
+    private void checkIndex(int index) {
+        if (!isCorrectIndex(index)) {
+            throw new ArrayIndexOutOfBoundsException("Некорректен индекс");
+        }
+    }
+
+    private boolean isCorrectIndex(int index) {
+        if ((index > -1) || (index < size())) return true;
+        return false;
     }
 
     public int indexOf(Object o) {
