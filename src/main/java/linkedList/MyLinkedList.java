@@ -21,8 +21,7 @@ public class MyLinkedList {
     }
 
     public boolean isEmpty() {
-        Node currNode = head;
-        return currNode == null;
+        return head == null;
     }
 
     public boolean contains(Object o) {
@@ -56,7 +55,29 @@ public class MyLinkedList {
     }
 
     public boolean remove(Object o) {
-        return false;
+
+        if (head == null) return false;                //если головной элемент null,возвращаем false;
+        if (head.getValue().equals(o)) {              //если значение первого объекта равно удаляемому
+            head = head.getNext();                    //присваиваем ссылку, возвращаем true;
+            return true;
+        }
+        if (head.getNext() == null) return false;      //если в головном элементе null,возвращаем false
+
+        Node curNode = head;                          //создаем объект действуюшего элемента со стартовой позицией в головном
+        Node prevNode = head;                         //создаем объект следующего элемента со стартовой позицией в головном
+
+        while ((curNode = curNode.getNext()) != null) { //пока действующий элемент не null
+            if (curNode.getValue().equals(o)) {       //если элемент равен удаляемому объекту останавливаемся
+                break;
+            }
+            prevNode = prevNode.getNext();            //предыдущему элементу дается ссылка на следующий
+        }
+        if (curNode == null) return false;             //если действующий элемент null возвращаем false
+
+        prevNode.setNext(curNode.getNext()); //удаляем элемент путем ссылки на следующий
+        curNode.setNext(null);              //устанавливаем действующий элемент в null
+
+        return true;                        //возвращаем true
     }
 
     public void clear() {
@@ -135,12 +156,33 @@ public class MyLinkedList {
     }
 
     public int indexOf(Object o) {
-        return 0;
+
+        int index = 0;
+        Node curNode = head;
+
+        while (curNode != null) {
+            if (curNode.getValue().equals(o)) {
+                return index;
+            }
+            index++;
+            curNode = curNode.getNext();
+        }
+        return -1;
     }
 
-    public int lastIndexOf(Object o) {
-        return 0;
-    }
+//    public int lastIndexOf(Object o) {
+//        int index = 0;
+//        Node curNode = head;
+//        int found=-1;
+//
+//        while ((curNode=curNode.getNext()) != null) {
+//            if (curNode.getValue().equals(o)) {
+//                found = index;
+//            }
+//            index ++;
+//        }
+//        return found;
+//    }
 
     @Override
     public String toString() {
