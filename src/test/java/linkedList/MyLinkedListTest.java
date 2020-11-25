@@ -111,7 +111,7 @@ public class MyLinkedListTest {
     }
 
     @Test
-    @DisplayName("считать первое вхождение элемента в массив ")
+    @DisplayName("считать первое вхождение элемента в список ")
     public void indexOfTest() {
         MyLinkedList expected = new MyLinkedList();
         expected.add(STR_SECOND);
@@ -125,7 +125,7 @@ public class MyLinkedListTest {
     }
 
 //        @Test
-//        @DisplayName("считать последнее вхождение элемента в массив ")
+//        @DisplayName("считать последнее вхождение элемента в список ")
 //        public void lastIndexOfTest() {
 //            MyLinkedList expected = new MyLinkedList();
 //            expected.add(STR_SECOND);
@@ -140,7 +140,7 @@ public class MyLinkedListTest {
 //        }
 
     @Test
-    @DisplayName("корректно модифицировать элементы массива ")
+    @DisplayName("корректно модифицировать элементы списка ")
     public void setTest() {
         MyLinkedList expected = new MyLinkedList();
         expected.add(STR_FIRST);
@@ -173,7 +173,7 @@ public class MyLinkedListTest {
 //        }
 
     @Test
-    @DisplayName("корректно выводить массив в виде строки ")
+    @DisplayName("корректно выводить список в виде строки ")
     public void toStringTest() {
         MyLinkedList expected = new MyLinkedList();
         expected.add(STR_FIRST);
