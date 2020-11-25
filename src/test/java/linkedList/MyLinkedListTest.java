@@ -17,7 +17,7 @@ public class MyLinkedListTest {
 
 
     @Test
-    @DisplayName("корректно показывать размер массива: ")
+    @DisplayName("корректно показывать размер списка: ")
     public void sizeTest() {
         MyLinkedList myLinkedList = new MyLinkedList();
         myLinkedList.add(STR_FIRST);
@@ -51,7 +51,7 @@ public class MyLinkedListTest {
     }
 
     @Test
-    @DisplayName("проверять пуст ли массив ")
+    @DisplayName("проверять пуст ли список ")
     public void isEmptyTest() {
         MyLinkedList expected = new MyLinkedList();
         Assertions.assertTrue(expected.isEmpty());
@@ -60,7 +60,7 @@ public class MyLinkedListTest {
     }
 
     @Test
-    @DisplayName("проверять содержит ли массив элемент ")
+    @DisplayName("проверять содержит ли список элемент ")
     public void containsTest() {
         MyLinkedList expected = new MyLinkedList();
         expected.add(STR_FIRST);
@@ -72,7 +72,7 @@ public class MyLinkedListTest {
     }
 
     @Test
-    @DisplayName("корректно очищать массив ")
+    @DisplayName("корректно очищать список ")
     public void clearingTest() {
         MyLinkedList expected = new MyLinkedList();
         expected.add(STR_SECOND);
