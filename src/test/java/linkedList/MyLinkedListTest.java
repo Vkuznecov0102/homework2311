@@ -124,20 +124,20 @@ public class MyLinkedListTest {
         Assertions.assertEquals(expected.indexOf(new Object()), -1);
     }
 
-//        @Test
-//        @DisplayName("считать последнее вхождение элемента в список ")
-//        public void lastIndexOfTest() {
-//            MyLinkedList expected = new MyLinkedList();
-//            expected.add(STR_SECOND);
-//            expected.add(STR_FIRST);
-//            expected.add(STR_FIRST);
-//            expected.add(STR_THIRD);
-//
-////            Assertions.assertEquals(expected.lastIndexOf("STR_FIRST"), 2); //должно быть 2
-////            Assertions.assertEquals(expected.lastIndexOf(STR_SECOND), -1); //считает что элемент отсутствует
-////            Assertions.assertEquals(expected.lastIndexOf(TO_STRING), -1); //работает
-//
-//        }
+    @Test
+    @DisplayName("считать последнее вхождение элемента в список ")
+    public void lastIndexOfTest() {
+        MyLinkedList expected = new MyLinkedList();
+        expected.add(STR_SECOND);
+        expected.add(STR_FIRST);
+        expected.add(STR_FIRST);
+        expected.add(STR_THIRD);
+
+        Assertions.assertEquals(expected.lastIndexOf(STR_FIRST), 2);
+        Assertions.assertEquals(expected.lastIndexOf(STR_SECOND), 0);
+        Assertions.assertEquals(expected.lastIndexOf(TO_STRING), -1);
+
+    }
 
     @Test
     @DisplayName("корректно модифицировать элементы списка ")
@@ -152,25 +152,25 @@ public class MyLinkedListTest {
         Assertions.assertEquals(expected.get(1), SET_STRING);
     }
 
-//        @Test
-//        @DisplayName("добавлять элемент по индексу ")
-//        public void addWithIndexTest() {
-//            CustomArrayList expected = new CustomArrayList();
-//            Assertions.assertEquals(expected.size(), EMPTY_SIZE);
-//            expected.add(STR_FIRST);
-//            expected.add(STR_SECOND);
-//            expected.add(STR_FIRST);
-//            expected.add(3, STR_FOURTH);
-//            expected.add(4, STR_FIFTH);
-//
-//            Assertions.assertEquals(expected.get(0), STR_FIRST);
-//            Assertions.assertEquals(expected.get(4), STR_FIFTH);
-//
-//            expected.add(0, TO_STRING);
-//
-//            Assertions.assertNotEquals(expected.get(0), STR_FIRST);
-//            Assertions.assertEquals(expected.size(), 6);
-//        }
+    @Test
+    @DisplayName("добавлять элемент по индексу ")
+    public void addWithIndexTest() {
+        MyLinkedList expected = new MyLinkedList();
+        Assertions.assertEquals(expected.size(), EMPTY_SIZE);
+        expected.add(STR_FIRST);
+        expected.add(STR_SECOND);
+        expected.add(STR_FIRST);
+        expected.add(3, STR_FOURTH);
+        expected.add(4, STR_FIFTH);
+
+        Assertions.assertEquals(expected.get(0), STR_FIRST);
+        Assertions.assertEquals(expected.get(4), STR_FIFTH);
+
+        expected.add(0, TO_STRING);
+
+        Assertions.assertNotEquals(expected.get(0), STR_FIRST);
+        Assertions.assertEquals(expected.size(), 6);
+    }
 
     @Test
     @DisplayName("корректно выводить список в виде строки ")

@@ -54,6 +54,26 @@ public class MyLinkedList {
         return true;
     }
 
+    public void add(int index, Object element) {
+        checkIndex(index);
+        Node curNode = head;
+        Node prevNode = head;
+        int count = 0;
+
+        if (index == 0) {
+            head = new Node(element, head);
+            return;
+        }
+        while ((curNode = curNode.getNext()) != null) {
+            count++;
+            if (count == index) {
+                break;
+            }
+            prevNode = prevNode.getNext();
+        }
+        prevNode.setNext(new Node(element, curNode));
+    }
+
     public boolean remove(Object o) {
 
         if (head == null) return false;                //если головной элемент null,возвращаем false;
@@ -108,9 +128,6 @@ public class MyLinkedList {
         return curNode.getValue();
     }
 
-    public void add(int index, Object element) {
-
-    }
 
     public Object remove(int index) {
         checkIndex(index);                                  //проверяем корректен ли индекс
@@ -170,19 +187,19 @@ public class MyLinkedList {
         return -1;
     }
 
-//    public int lastIndexOf(Object o) {
-//        int index = 0;
-//        Node curNode = head;
-//        int found=-1;
-//
-//        while ((curNode=curNode.getNext()) != null) {
-//            if (curNode.getValue().equals(o)) {
-//                found = index;
-//            }
-//            index ++;
-//        }
-//        return found;
-//    }
+    public int lastIndexOf(Object o) {
+        int index = 0;
+        int found = -1;
+        Node current = head;
+        while (current != null) {
+            if (current.getValue().equals(o)) {
+                found = index;
+            }
+            index++;
+            current = current.getNext();
+        }
+        return found;
+    }
 
     @Override
     public String toString() {

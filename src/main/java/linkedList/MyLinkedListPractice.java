@@ -44,14 +44,14 @@ public class MyLinkedListPractice {
         System.out.println("list.indexOf(\"Это результат метода set\") = " + list.indexOf("Это результат метода set"));
 
         list.add("Это третий объект");
-//        System.out.println(list.lastIndexOf("Это результат метода set"));
+        System.out.println("list.lastIndexOf(\"Это еще один элемент\") = " + list.lastIndexOf("Это еще один элемент"));
+        System.out.println("list.lastIndexOf(\"Это третий объект\") = " + list.lastIndexOf("Это третий объект"));
 
-
-//        list.add(1,"Объект метода add");
-//        System.out.println(list);
-
-        list.clear();
+        list.add(1,"Объект метода add");
         System.out.println(list);
-        System.out.println("list.size() = " + list.size());
+
+       list.clear();
+       System.out.println(list);
+       System.out.println("list.size() = " + list.size());
     }
 }
